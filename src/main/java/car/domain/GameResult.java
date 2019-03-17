@@ -1,7 +1,8 @@
-package car.entity;
+package car.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameResult {
     private List<Car> aRoundResult;
@@ -13,6 +14,7 @@ public class GameResult {
     public static GameResult createResultInstance(List<Car> result) {
         GameResult gameResult = new GameResult();
         gameResult.aRoundResult = result;
+
         return gameResult;
     }
 
@@ -21,17 +23,12 @@ public class GameResult {
     }
 
 
-    public String getWinnerNames() {
+    public List<String> getWinnerNames() {
         int maxMovement = getMaxMovement();
-        StringBuffer winnerNamesStringBuffer = new StringBuffer();
-
-        aRoundResult.stream()
+        return aRoundResult.stream()
                 .filter(car -> car.getMovingCount() >= maxMovement)
-                .forEach(car-> {
-                    winnerNamesStringBuffer.append(car.getName()+ " ");
-                });
-
-        return winnerNamesStringBuffer.toString();
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
     }
 
     public int getMaxMovement() {

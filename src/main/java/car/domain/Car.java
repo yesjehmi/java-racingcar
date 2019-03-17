@@ -1,4 +1,4 @@
-package car.entity;
+package car.domain;
 
 import spark.utils.StringUtils;
 

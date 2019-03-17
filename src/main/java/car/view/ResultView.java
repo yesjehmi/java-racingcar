@@ -1,4 +1,6 @@
-package car.entity;
+package car.view;
+
+import car.domain.GameResult;
 
 public class ResultView {
     public static void printGame(GameResult gameResult) {
@@ -14,7 +16,10 @@ public class ResultView {
     public static void printGameWinner(GameResult gameResult) {
         StringBuffer winnerString = new StringBuffer();
 
-        winnerString.append(gameResult.getWinnerNames());
+        for(String name : gameResult.getWinnerNames()) {
+            winnerString.append(name);
+        }
+
         winnerString.append("가 최종 우승했습니다.");
 
         System.out.println(winnerString);

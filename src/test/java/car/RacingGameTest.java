@@ -1,7 +1,7 @@
 package car;
 
-import car.entity.Car;
-import car.entity.RacingGame;
+import car.domain.Car;
+import car.domain.RacingGame;
 import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -29,7 +29,6 @@ public class RacingGameTest {
     public void 차_움직임_기준치보다_높을_때_움직임() {
         Car testCar = Car.getCarInstance("test1");
         testCar.move(MOVING_RANDOM_VALUE);
-
         assertThat(testCar.getMovingCount()).isEqualTo(1);
     }
 }
